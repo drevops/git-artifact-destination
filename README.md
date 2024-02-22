@@ -1,5 +1,5 @@
 # robo-git-artefact-destination
-Destination repository for [git-artifact](https://github.com/drevops/git-artifact) project
+Deployment destination test repository for [git-artifact](https://github.com/drevops/git-artifact) project
 
 Visit [Branches](https://github.com/drevops/git-artifact-destination/branches) tab to see all artifact branches pushed into this repo.
 
