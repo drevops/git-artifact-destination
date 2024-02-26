@@ -108,10 +108,10 @@ jobs:
 
           vendor/bin/robo artifact \
           git@github.com:drevops/git-artifact-destination.git \
-          --branch=mode-force-push-github \
-          --mode=force-push \
-          --report=$HOME/report-mode-force-push.txt \
-          --push
+            --branch=mode-force-push-github--[branch] \
+            --mode=force-push \
+            --report=$HOME/report-mode-force-push.txt \
+            --push
 
           DEPLOY_BRANCH=$(sed -n 's/Remote branch://p' $HOME/report-mode-force-push.txt | sed 's/ //g')
           echo "Deployed to $DEPLOY_BRANCH"
@@ -124,11 +124,11 @@ jobs:
           touch $TEST_FILE
 
           vendor/bin/robo artifact \
-          git@github.com:drevops/git-artifact-destination.git \
-          --branch=mode-branch-github-[timestamp:Y-m-d_H-i-s] \
-          --mode=branch \
-          --report=$HOME/report-mode-branch.txt \
-          --push
+            git@github.com:drevops/git-artifact-destination.git \
+            --branch=mode-branch-github--[branch] \
+            --mode=branch \
+            --report=$HOME/report-mode-branch.txt \
+            --push
 
           DEPLOY_BRANCH=$(sed -n 's/Remote branch://p' $HOME/report-mode-branch.txt | sed 's/ //g')
           echo "Deployed to $DEPLOY_BRANCH"
