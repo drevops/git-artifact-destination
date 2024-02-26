@@ -64,7 +64,7 @@ jobs:
       - run:
           name: Prepare test file.
           command: |
-            TEST_FILE="test-file--force-push--circleci--${CIRCLE_BRANCH}.txt"
+            TEST_FILE="test-file--force-push--circleci--${CIRCLE_BRANCH//\//-}.txt"
             echo "Deployment 1 for branch ${CIRCLE_BRANCH}" >> $TEST_FILE
             date "+%Y%m%d-%H%M%S" >> $TEST_FILE
 
@@ -134,7 +134,7 @@ jobs:
       - run:
           name: Prepare test file.
           command: |
-            TEST_FILE="test-file--branch--circleci--${CIRCLE_BRANCH}.txt"
+            TEST_FILE="test-file--branch--circleci--${CIRCLE_BRANCH//\//-}.txt"
             echo "Deployment 1 for branch ${CIRCLE_BRANCH}" >> $TEST_FILE
             date "+%Y%m%d-%H%M%S" >> $TEST_FILE
 
