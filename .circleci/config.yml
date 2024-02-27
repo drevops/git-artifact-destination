@@ -86,6 +86,7 @@ jobs:
             export TEST_FILE="test-file--force-push--circleci--${CIRCLE_BRANCH//\//-}.txt"
             echo "Deployment 1 for branch $CIRCLE_BRANCH" >> $TEST_FILE
             date "+%Y%m%d-%H%M%S" >> $TEST_FILE
+            cat $TEST_FILE
             echo $TEST_FILE > $HOME/test-file.txt
 
       - run:
@@ -111,6 +112,7 @@ jobs:
             export TEST_FILE="test-file--force-push--circleci--${CIRCLE_BRANCH//\//-}.txt"
             echo "Deployment 2 for branch $CIRCLE_BRANCH" >> $TEST_FILE
             date "+%Y%m%d-%H%M%S" >> $TEST_FILE
+            cat $TEST_FILE
 
       - run:
           name: Deployment 2
@@ -158,6 +160,7 @@ jobs:
             export TEST_FILE="test-file--branch--circleci--${CIRCLE_BRANCH//\//-}.txt"
             echo "Deployment 1 for branch $CIRCLE_BRANCH" >> $TEST_FILE
             date "+%Y%m%d-%H%M%S" >> $TEST_FILE
+            cat $TEST_FILE
             echo $TEST_FILE > $HOME/test-file.txt
 
       - run:
@@ -195,6 +198,7 @@ jobs:
             export TEST_FILE="test-file--branch--circleci--${CIRCLE_BRANCH//\//-}.txt"
             echo "Deployment 2 for branch $CIRCLE_BRANCH" >> $TEST_FILE
             date "+%Y%m%d-%H%M%S" >> $TEST_FILE
+            cat $TEST_FILE
 
       - run:
           name: Deployment 2 - new branch
