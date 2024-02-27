@@ -83,6 +83,7 @@ jobs:
           # Do not persist credentials after checkout
           # to allow to use custom credentials to push to a remote repo.
           persist-credentials: false
+          ref: ${{ github.ref }}
 
       - name: Cache Composer dependencies
         uses: actions/cache@v4
