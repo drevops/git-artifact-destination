@@ -142,7 +142,7 @@ jobs:
           command: |
             vendor/bin/robo artifact \
               git@github.com:drevops/git-artifact-destination.git \
-              --branch=mode--branch--circleci--[branch]--[timestamp:Y-m-d] \
+              --branch=mode--branch--circleci--[branch]--[timestamp:Y-m-d_H] \
               --mode=branch \
               --report=$HOME/report--mode--branch.txt \
               --push \
