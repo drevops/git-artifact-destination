@@ -1,4 +1,4 @@
-# git-artefact-destination
+# git-artifact-destination
 Deployment destination test repository for [git-artifact](https://github.com/drevops/git-artifact) project
 
 Visit [Branches](https://github.com/drevops/git-artifact-destination/branches) tab to see all artifact branches pushed into this repo.
