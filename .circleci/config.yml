@@ -88,8 +88,7 @@ jobs:
       - run:
           name: Update the test file to simulate changes in the source repository.
           command: |
-            sleep 1
-
+            export TEST_FILE="test-file--branch--circleci--${CIRCLE_BRANCH//\//-}.txt"
             echo "Deployment 2 for branch ${CIRCLE_BRANCH}" >> $TEST_FILE
             date "+%Y%m%d-%H%M%S" >> $TEST_FILE
 
@@ -158,6 +157,7 @@ jobs:
       - run:
           name: Update the test file to simulate changes in the source repository.
           command: |
+            export TEST_FILE="test-file--branch--circleci--${CIRCLE_BRANCH//\//-}.txt"
             echo "Deployment 2 for branch ${CIRCLE_BRANCH}" >> $TEST_FILE
             date "+%Y%m%d-%H%M%S" >> $TEST_FILE
 
