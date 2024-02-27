@@ -14,14 +14,14 @@ aliases:
     run:
       name: Setup git
       command: |
-        mkdir -p "${HOME}/.ssh/"
-        echo -e "Host *\n\tStrictHostKeyChecking no\n" > "${HOME}/.ssh/config"
+        mkdir -p "$HOME/.ssh/"
+        echo -e "Host *\n\tStrictHostKeyChecking no\n" > "$HOME/.ssh/config"
         DEPLOY_SSH_FILE="${DEPLOY_SSH_FINGERPRINT//:}"
-        DEPLOY_SSH_FILE="${HOME}/.ssh/id_rsa_${DEPLOY_SSH_FILE//\"}"
-        if [ -f "${DEPLOY_SSH_FILE}" ]; then
-          echo "Found Deploy SSH key file ${DEPLOY_SSH_FILE}"
+        DEPLOY_SSH_FILE="$HOME/.ssh/id_rsa_${DEPLOY_SSH_FILE//\"}"
+        if [ -f "$DEPLOY_SSH_FILE" ]; then
+          echo "Found Deploy SSH key file $DEPLOY_SSH_FILE"
           ssh-add -D > /dev/null
-          ssh-add "${DEPLOY_SSH_FILE}"
+          ssh-add "$DEPLOY_SSH_FILE"
         fi
         git config --global user.name "$DEPLOY_USER_NAME"
         git config --global user.email "$DEPLOY_USER_EMAIL"
@@ -65,7 +65,7 @@ jobs:
           name: Prepare test file.
           command: |
             export TEST_FILE="test-file--force-push--circleci--${CIRCLE_BRANCH//\//-}.txt"
-            echo "Deployment 1 for branch ${CIRCLE_BRANCH}" >> $TEST_FILE
+            echo "Deployment 1 for branch $CIRCLE_BRANCH" >> $TEST_FILE
             date "+%Y%m%d-%H%M%S" >> $TEST_FILE
 
       - run:
@@ -89,7 +89,7 @@ jobs:
           name: Update the test file to simulate changes in the source repository.
           command: |
             export TEST_FILE="test-file--branch--circleci--${CIRCLE_BRANCH//\//-}.txt"
-            echo "Deployment 2 for branch ${CIRCLE_BRANCH}" >> $TEST_FILE
+            echo "Deployment 2 for branch $CIRCLE_BRANCH" >> $TEST_FILE
             date "+%Y%m%d-%H%M%S" >> $TEST_FILE
 
       - run:
@@ -134,7 +134,7 @@ jobs:
           name: Prepare test file.
           command: |
             export TEST_FILE="test-file--branch--circleci--${CIRCLE_BRANCH//\//-}.txt"
-            echo "Deployment 1 for branch ${CIRCLE_BRANCH}" >> $TEST_FILE
+            echo "Deployment 1 for branch $CIRCLE_BRANCH" >> $TEST_FILE
             date "+%Y%m%d-%H%M%S" >> $TEST_FILE
 
       - run:
@@ -158,7 +158,7 @@ jobs:
           name: Update the test file to simulate changes in the source repository.
           command: |
             export TEST_FILE="test-file--branch--circleci--${CIRCLE_BRANCH//\//-}.txt"
-            echo "Deployment 2 for branch ${CIRCLE_BRANCH}" >> $TEST_FILE
+            echo "Deployment 2 for branch $CIRCLE_BRANCH" >> $TEST_FILE
             date "+%Y%m%d-%H%M%S" >> $TEST_FILE
 
       - run:
