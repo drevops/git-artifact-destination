@@ -78,6 +78,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
+          # Fetch all history for git repository.
+          fetch-depth: 0
+          # Do not persist credentials after checkout
+          # to allow to use custom credentials to push to a remote repo.
           persist-credentials: false
 
       - name: Cache Composer dependencies
