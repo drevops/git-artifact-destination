@@ -46,6 +46,14 @@ jobs:
           command: composer validate --ansi --strict
 
       - run:
+          name: Install PCOV
+          command: |
+            # @todo Replace with PECL install after resolution in https://github.com/krakjoe/pcov/issues/114
+            cd $HOME && git clone https://github.com/sebastianbergmann/pcov.git && cd pcov && git checkout 3fd17a87da7c50c055c92b2ffc6b2222f9c11fa9
+            phpize && ./configure --enable-pcov && make && NO_INTERACTION=1 make test && sudo make install
+            echo -e "extension=pcov.so\npcov.enabled=1" | sudo tee -a /etc/php.d/pcov.ini
+
+      - run:
           name: Install dependencies
           command: composer install --ansi --no-progress --no-interaction --no-suggest --prefer-dist
 
