@@ -44,6 +44,9 @@ class ArtifactGitRepository extends GitRepository {
       $this->logger = $logger;
     }
 
+    // Ensure Git respects file permissions.
+    $this->execute('config', ['core.filemode', 'true']);
+
     $this->gitignore = $this->getRepositoryPath() . DIRECTORY_SEPARATOR . '.gitignore';
   }
 
