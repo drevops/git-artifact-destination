@@ -6,6 +6,10 @@
 .github
 .idea
 .logs
+phpcs.xml
+phpstan.neon
+phpunit.xml
+rector.php
 tests
 vendor
 vendor-bin

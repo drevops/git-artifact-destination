@@ -23,15 +23,27 @@ RUN version=2.8.10 && \
     composer --version && \
     composer clear-cache
 
+# Install Box as a standalone tool to compile the PHAR. Fetching it separately
+# (rather than as a dev dependency) lets the application be installed with
+# --no-dev, so no build or dev tooling ends up in the compiled artifact.
+# @see https://github.com/box-project/box/releases
+# renovate: datasource=github-releases depName=box-project/box
+RUN box_version=4.7.0 && \
+    curl -fsSL -o /usr/local/bin/box "https://github.com/box-project/box/releases/download/${box_version}/box.phar" && \
+    chmod +x /usr/local/bin/box && \
+    box --version
+
 WORKDIR /app
 
 COPY composer.json composer.lock /app/
 
-RUN COMPOSER_MEMORY_LIMIT=-1 composer install -n --ansi --prefer-dist --optimize-autoloader
+RUN COMPOSER_MEMORY_LIMIT=-1 composer install -n --ansi --prefer-dist --optimize-autoloader --no-dev
 
 COPY . /app
 
-RUN composer build
+RUN box validate
+
+RUN box compile
 
 FROM php:8.5-cli@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e
 
