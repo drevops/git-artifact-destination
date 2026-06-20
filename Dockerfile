@@ -45,9 +45,7 @@ RUN COMPOSER_MEMORY_LIMIT=-1 composer install -n --ansi --prefer-dist --optimize
 
 COPY . /app
 
-RUN box validate
-
-RUN box compile
+RUN box validate && box compile
 
 FROM php:8.5-cli@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e
 
