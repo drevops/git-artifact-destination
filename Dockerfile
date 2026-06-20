@@ -27,9 +27,13 @@ RUN version=2.8.10 && \
 # (rather than as a dev dependency) lets the application be installed with
 # --no-dev, so no build or dev tooling ends up in the compiled artifact.
 # @see https://github.com/box-project/box/releases
+# The checksum is pinned to the release and must be bumped with the version.
 # renovate: datasource=github-releases depName=box-project/box
+# hadolint ignore=DL4006
 RUN box_version=4.7.0 && \
+    box_sha256=3d390eeaec33288098fe83f8a54c60cc575cb6be295f38ff4482b4b4f26f8d52 && \
     curl -fsSL -o /usr/local/bin/box "https://github.com/box-project/box/releases/download/${box_version}/box.phar" && \
+    echo "${box_sha256}  /usr/local/bin/box" | sha256sum -c - && \
     chmod +x /usr/local/bin/box && \
     box --version
 
