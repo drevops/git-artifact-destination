@@ -26,7 +26,7 @@ class ArtifactGitRepository extends GitRepository {
   /**
    * The standard gitignore file path.
    */
-  protected ?string $gitignore = NULL;
+  protected ?string $gitignore;
 
   /**
    * The custom gitignore file path.
