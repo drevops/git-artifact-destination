@@ -21,7 +21,7 @@
         "symfony/console": "^7.4.18",
         "symfony/filesystem": "^7.4.18",
         "symfony/finder": "^7.4.17",
-        "symfony/monolog-bridge": "^7.4.17",
+        "symfony/monolog-bridge": "^7.4.18",
         "symfony/process": "^7.4.18"
     },
     "require-dev": {
