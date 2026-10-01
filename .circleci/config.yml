@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 aliases:
   - &deploy_ssh_fingerprint "e8:d7:da:b8:6a:fb:75:50:8d:5f:48:61:3c:46:49:50"
 
@@ -212,7 +212,6 @@ jobs:
             echo "See https://github.com/drevops/git-artifact-destination/blob/$DEPLOYED_BRANCH/$(cat $HOME/test-file.txt)"
 
 workflows:
-  version: 2
   main:
     jobs:
       - build
